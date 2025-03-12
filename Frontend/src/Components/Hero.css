@@ -1,0 +1,197 @@
+  /* Hero Section */
+  .hero {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    background: transparent;
+    color: white;
+    padding: 20px;
+    width: 100%;
+}
+  
+  /* Left Content */
+  .hero-content {
+    max-width: 500px;
+  }
+  
+  .intro-box {
+    margin-top: -100px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    color: black;
+    font-size: 22px;
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+  }
+  
+  .hero-content h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .hero-content h1 span {
+    color: #ff004f;
+  }
+  
+  /* Animated Text */
+  .changing-text {
+    font-size: 30px;
+    font-weight: 600;
+    background: white;
+    border-radius: 10px;    
+  }
+  
+/* Animated Text */
+.animated-text {
+    color: #ff004f;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2s steps(15, end) infinite, 0.6s step-end infinite alternate;
+}
+
+  
+  /* Typing Effect */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  /* Blinking Cursor */
+  .animated-text::after {
+    content: "|";
+    color: #ff004f;
+    animation: blink 0.10s infinite;
+  }
+  
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+/* Hero Image Container */
+.hero-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+/* 1️⃣ First, the Circle Appears */
+.circle {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, #542581, #9b34eb); /* Smooth gradient */
+    border-radius: 50%;
+    z-index: 0;
+    animation: easeInShape 1s ease-in-out forwards;
+}
+
+/* 2️⃣ Second, the Image Slides in After the Circle */
+.hero-image img {
+    width: 550px;
+    height: 550px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    margin-top: 300px;
+    animation: slideIn 1s ease-in-out forwards;
+    animation-delay: 1s; /* Starts after the circle */
+    opacity: 0;
+}
+
+/* 3️⃣ Third, Icons Fall One by One */
+.icon {
+    position: absolute;
+    font-size: 80px;
+    height: 120px;
+    width: 125px;
+    background: linear-gradient(135deg, #542581, #9b34eb);
+    border-radius: 300px;
+    padding-top: 8px;
+    animation: fallIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards,
+    floatAnimation 2s ease-in-out infinite 1s;
+    animation-fill-mode: both;
+    opacity: 0;
+}
+/* Positioning Icons Around the Circle */
+.icon.js { top: 6%; left: 40%; color: #f7df1e; }
+.icon.react { top: 70%; left: 0%; color: #61dafb; }
+.icon.node { top: 70%; right: -0%; color: #8cc84b; }
+.icon.mongo { top: 20%; left: -5%; color: #47a248; }
+.icon.express { top: 45%; right: -20%; color: #ffffff; padding: 5px; border-radius: 50%; }
+.icon.css { bottom: 10%;top: 45%; right: 95.5%; color: #1572b6; }
+.icon.selenium { top: 20%; right: -5%; color: #43b02a; }
+
+/* Icons Delayed Falling One by One */
+/* Icons Delayed Falling One by One */
+.icon.js { animation-delay: 2.6s; } /* After image */
+.icon.react { animation-delay: 2s; }
+.icon.node { animation-delay: 3.2s; }
+.icon.mongo { animation-delay: 2.4s; }
+.icon.express { animation-delay: 3s; } /* Fixing express */
+.icon.css { animation-delay: 2.2s; }
+.icon.selenium { animation-delay: 2.8s; } /* Fixing selenium */
+
+  
+  /* Floating Animation */
+  @keyframes floatAnimation {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+  }
+  
+
+
+/* === Keyframes === */
+
+/* Circle Appears */
+@keyframes easeInShape {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Image Slides In */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Falling Icons */
+@keyframes fallIn {
+    0% {
+        transform: translateY(-100px) rotate(-180deg);
+        opacity: 0;
+    }
+    80% {
+        transform: translateY(5px) rotate(10deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+}
