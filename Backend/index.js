@@ -1,23 +1,21 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
-require("dotenv").config;
+const dotenv = require("dotenv");
+const connectDB = require("./Config/DB");
+const contactRoutes = require("./Routes/contactRoutes");
+const analyticsRoutes = require("./Routes/analyticsRoutes");
+
+dotenv.config();
+connectDB();
 
 const app = express();
-app.use(cors);
+
+app.use(cors());
 app.use(express.json());
 
-mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log(err));
-
-app.get("/", (req, res) => {
-  res.send("Portfolio Backend Running");
-});
+//Routes
+app.use("/api/contact", contactRoutes);
+app.use("/api/analytics", analyticsRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
