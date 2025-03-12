@@ -8,75 +8,70 @@
     background: transparent;
     color: white;
     padding: 20px;
-    width: 100%;
+    width: 95%;
 }
   
-  /* Left Content */
-  .hero-content {
+/* Left Content */
+.hero-content {
     max-width: 500px;
-  }
-  
-  .intro-box {
-    margin-top: -100px;
+    text-align: center; /* Center align content */
+    margin-left: -465px;
+    margin-top: 140px;
+}
+
+/* Intro Box */
+.intro-box {
+    margin-left: -235px;
+    margin-top: -110px;
     background: white;
-    padding: 15px;
+    padding: 15px 20px;
     border-radius: 10px;
     color: black;
     font-size: 22px;
-    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
-  }
-  
-  .hero-content h1 {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 200px;
+}
+
+/* Align Lottie and Text in the Same Line */
+.intro-content {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between Lottie & Text */
+    width: 250px;
+}
+
+/* Lottie Animation */
+.lottie-icon {
+    width: 550px; /* Adjust size */
+    height: 250px;
+    margin-top: -100px;
+    margin-left: -250px;
+z-index: 2;
+}
+
+/* Highlight Name */
+.name {
+    padding-left: 80px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #542581;
+}
+
+
+/* Name Styling */
+.hero-content h1 {
     font-size: 30px;
     font-weight: bold;
     margin: 10px 0;
-  }
-  
-  .hero-content h1 span {
-    color: #ff004f;
-  }
-  
-  /* Animated Text */
-  .changing-text {
-    font-size: 30px;
-    font-weight: 600;
-    background: white;
-    border-radius: 10px;    
-  }
-  
-/* Animated Text */
-.animated-text {
-    color: #ff004f;
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    animation: typing 2s steps(15, end) infinite, 0.6s step-end infinite alternate;
 }
 
-  
-  /* Typing Effect */
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
-  
-  /* Blinking Cursor */
-  .animated-text::after {
-    content: "|";
-    color: #ff004f;
-    animation: blink 0.10s infinite;
-  }
-  
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
-  }
+.hero-content h1 span {
+    color: #542581;
+}
 
 /* Hero Image Container */
 .hero-image {
@@ -84,7 +79,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 200px;
 }
 
 /* 1️⃣ First, the Circle Appears */
@@ -92,58 +87,99 @@
     position: absolute;
     width: 500px;
     height: 500px;
-    background: linear-gradient(135deg, #542581, #9b34eb); /* Smooth gradient */
+    background: linear-gradient(135deg, #542581, #9b34eb);
     border-radius: 50%;
-    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     animation: easeInShape 1s ease-in-out forwards;
 }
 
+.changing-text-circle {
+    font-size: 22px;
+    font-weight: bold;
+    color: #c8c7f1;
+    text-align: center;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: -300px;
+    background-color: #542581;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Blinking Cursor */
+.cursor {
+    color: #c8c7f1;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 2px;
+    animation: blink 0.7s infinite;
+    margin-top: -300px;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+
+
 /* 2️⃣ Second, the Image Slides in After the Circle */
-.hero-image img {
-    width: 550px;
-    height: 550px;
+.aniimag{
+    width: 530px;
+    height: 530px;
     border-radius: 50%;
     position: relative;
     z-index: 1;
-    margin-top: 300px;
+    margin-top: 200px;
     animation: slideIn 1s ease-in-out forwards;
     animation-delay: 1s; /* Starts after the circle */
     opacity: 0;
 }
-
-/* 3️⃣ Third, Icons Fall One by One */
-.icon {
+@keyframes fallIn {
+    0% {
+      transform: translateY(-100px) rotate(-180deg);
+      opacity: 0;
+    }
+    80% {
+      transform: translateY(5px) rotate(10deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+  }
+  
+  .icon {
     position: absolute;
-    font-size: 80px;
-    height: 120px;
-    width: 125px;
+    font-size: 70px;
+    height: 100px;
+    width: 100px;
     background: linear-gradient(135deg, #542581, #9b34eb);
-    border-radius: 300px;
-    padding-top: 8px;
+    border-radius: 100px;
     animation: fallIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards,
     floatAnimation 2s ease-in-out infinite 1s;
     animation-fill-mode: both;
-    opacity: 0;
-}
+  }
 /* Positioning Icons Around the Circle */
-.icon.js { top: 6%; left: 40%; color: #f7df1e; }
-.icon.react { top: 70%; left: 0%; color: #61dafb; }
-.icon.node { top: 70%; right: -0%; color: #8cc84b; }
-.icon.mongo { top: 20%; left: -5%; color: #47a248; }
-.icon.express { top: 45%; right: -20%; color: #ffffff; padding: 5px; border-radius: 50%; }
-.icon.css { bottom: 10%;top: 45%; right: 95.5%; color: #1572b6; }
-.icon.selenium { top: 20%; right: -5%; color: #43b02a; }
+.icon.js { top: 2%; left: 40%; color: #f7df1e; }
+.icon.react { top: 38%; left: -17%; color: #61dafb; }
+.icon.node { top: 11%; right: 5%; color: #8cc84b; }
+.icon.mongo { top: 11%; left: 5%; color: #47a248; }
+.icon.express { top: 38%; right: -19%; color: #ffffff; padding: 5px; border-radius: 50%; }
+.icon.css { bottom: 10%;top: 65%; right: 90%; z-index: 1; color: #1572b6; }
+.icon.selenium { top: 63%; right: -10%; z-index: 1; color: #43b02a; }
 
-/* Icons Delayed Falling One by One */
 /* Icons Delayed Falling One by One */
 .icon.js { animation-delay: 2.6s; } /* After image */
-.icon.react { animation-delay: 2s; }
-.icon.node { animation-delay: 3.2s; }
+.icon.react { animation-delay: 2.2s; }
+.icon.node { animation-delay: 3s; }
 .icon.mongo { animation-delay: 2.4s; }
-.icon.express { animation-delay: 3s; } /* Fixing express */
-.icon.css { animation-delay: 2.2s; }
-.icon.selenium { animation-delay: 2.8s; } /* Fixing selenium */
-
+.icon.express { animation-delay: 3.2s; } /* Fixing express */
+.icon.css { animation-delay: 2s; }
+.icon.selenium { animation-delay: 3.4s; } /* Fixing selenium */
   
   /* Floating Animation */
   @keyframes floatAnimation {
@@ -152,9 +188,6 @@
     100% { transform: translateY(0); }
   }
   
-
-
-/* === Keyframes === */
 
 /* Circle Appears */
 @keyframes easeInShape {
@@ -180,18 +213,95 @@
     }
 }
 
-/* Falling Icons */
 @keyframes fallIn {
     0% {
-        transform: translateY(-100px) rotate(-180deg);
+        transform: translateY(-200px) rotate(-180deg);
         opacity: 0;
     }
     80% {
-        transform: translateY(5px) rotate(10deg);
+        transform: translateY(10px) rotate(15deg);
         opacity: 1;
     }
     100% {
         transform: translateY(0) rotate(0deg);
         opacity: 1;
     }
+}
+
+.social-links {
+    position: fixed; /* Keeps it in place while scrolling */
+    bottom: 20px; /* Raised a little for better visibility */
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Increased gap slightly for better spacing */
+    z-index: 1000; /* Ensures it's above other elements */
+  }
+  
+  .social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px; /* Slightly increased for better visibility */
+    width: 35px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    color: #c8c7f1; /* Ensures good contrast */
+    background: linear-gradient(135deg, #542581, #9b34eb);
+    border-radius: 50%; /* Ensures a perfect circle */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+    cursor: pointer;
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.1); /* Adds a subtle hover effect */
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3); /* Enhances hover glow */
+  }
+  
+.circle2 {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #542581, #d196ff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: easeInShape 1s ease-in-out forwards;
+    z-index: -1;
+    margin-top: 500px;
+    margin-left: -1000px;
+    filter: blur(2px);
+
+
+}
+.circle3 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #542581, #d196ff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: easeInShape 1s ease-in-out forwards;
+    z-index: -1;
+    margin-top: 700px;
+    margin-left: -400px;
+    filter: blur(2px);
+
+}
+.circle4 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #542581, #d196ff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: easeInShape 1s ease-in-out forwards;
+    z-index: -1;
+    margin-top: -600px;
+    margin-left: 1300px;
+    filter: blur(2px);
 }

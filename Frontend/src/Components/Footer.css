@@ -1,0 +1,31 @@
+/* Footer Styles */
+.footer {
+    background: #542581;
+    color: #c8c7f1;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 16px;
+    margin-left: -8px;
+    margin-right: -7px;
+    margin-bottom: -7px;
+  }
+  
+  .footer .heart-icon {
+    color: #ff4081;
+    margin: 0 5px;
+    animation: heartbeat 1.5s infinite;
+  }
+  
+  /* Heartbeat Animation */
+  @keyframes heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  

@@ -1,9 +1,25 @@
+import { useState, useEffect } from "react";
 import logo from "../assets/Plogo.png";
-import './Navbar.css'
+import "./Navbar.css";
 
 const Navbar = () => {
+  const [scrolling, setScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${scrolling ? "scrolled" : ""}`}>
       <div className="logo-container">
         <img src={logo} alt="Logo" className="logo" />
       </div>

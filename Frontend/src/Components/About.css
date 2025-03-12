@@ -1,0 +1,140 @@
+/* About Section */
+#about {
+    margin-top: 20px;
+    margin-left: -8px;
+    margin-right: -7px;
+    padding: 80px 0;
+    background: #542581; /* Dark Blue - Matches Hero */
+    color: #c8c7f1;
+    font-family: "Poppins", sans-serif;
+    height: 95vh;
+  }
+  
+  .about-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 1100px;
+    margin: auto;
+    gap: 40px;
+  }
+  
+  /* Left Side - Image Slider */
+  .about-image {
+    width: 380px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+  }
+  
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  /* Fade-in effect for Image Slider */
+  .fade-in {
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0.3;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Right Side - Content */
+  .about-content {
+    flex: 1;
+    max-width: 600px;
+  }
+  
+  .about-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #c8c7f1; /* Orange Accent */
+    margin-bottom: 15px;
+  }
+  
+  .about-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .highlight {
+    color: #9b34eb;
+    font-weight: 600;
+  }
+  
+  /* Tabs */
+  .about-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .tab-button {
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    background: linear-gradient(135deg, #542581, #9b34eb);
+    color: white;
+    font-weight: 500;
+  }
+  
+  .tab-button.active,
+  .tab-button:hover {
+    background: #471278; /* Orange */
+    color: white;
+  }
+  
+  /* Tab Content */
+  .tab-content {
+    background: #9b34eb;
+    padding: 15px;
+    border-radius: 10px;
+    min-width: 100vh;
+
+  }
+  
+  .tab-content ul {
+    list-style: none;
+    padding: 0;
+
+  }
+  
+  .tab-content li {
+    margin-bottom: 10px;
+  }
+  
+  .tab-content strong {
+    color: #111;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .about-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .about-image {
+      max-width: 100%;
+    }
+  
+    .tab-button {
+      padding: 10px;
+      font-size: 0.9rem;
+    }
+  }
+  

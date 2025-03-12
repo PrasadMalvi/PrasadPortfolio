@@ -1,0 +1,142 @@
+/* Skills Section */
+#skills {
+    padding: 80px 0;
+    background: transparent;
+    color: #e0e0e0;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+  }
+  
+  .skills-container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+  }
+  
+  .skills-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #542581;
+    margin-bottom: 30px;
+  }
+  
+  .skills-category {
+    margin-bottom: 40px;
+  }
+  
+  .category-title {
+    font-size: 1.5rem;
+    color: #542581;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    padding: 20px;
+  }
+  
+  .skill-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #542581;
+    padding: 10px;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .skill-card:hover {
+    transform: scale(1.1);
+  }
+  
+  .skill-icon {
+    font-size: 3rem;
+    margin-bottom: 5px;
+  }
+  
+  /* Use original icon colors */
+  .fa-html5 {
+    color: #e34f26;
+  }
+  .fa-css3 {
+    color: #1572b6;
+  }
+  .fa-js {
+    color: #f7df1e;
+  }
+  .fa-react {
+    color: #61dafb;
+  }
+  .fa-node-js {
+    color: #68a063;
+  }
+  .fa-git-alt {
+    color: #f34f29;
+  }
+  .fa-github {
+    color: #ffffff;
+  }
+  .fa-aws {
+    color: #ff9900;
+  }
+  .fa-docker {
+    color: #2496ed;
+  }
+  .fa-chart-line {
+    color: #764abc;
+  }
+  .fa-server {
+    color: #5c6bc0;
+  }
+  .fa-database {
+    color: #4db33d;
+  }
+  .fa-key {
+    color: #f4a261;
+  }
+  .fa-plug {
+    color: #e76f51;
+  }
+  .fa-network-wired {
+    color: #2a9d8f;
+  }
+  .fa-code-branch {
+    color: #56b4e9;
+  }
+  .fa-vial {
+    color: #8e44ad;
+  }
+  .fa-flask {
+    color: #f1c40f;
+  }
+  .fa-check {
+    color: #27ae60;
+  }
+  .fa-robot {
+    color: #d35400;
+  }
+  .fa-box-open {
+    color: #c0392b;
+  }
+  .fa-map {
+    color: #3498db;
+  }
+  .fa-project-diagram {
+    color: #ff5733;
+  }
+  
+  .skill-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: white;
+    margin-top: 5px;
+  }
+  
