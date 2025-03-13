@@ -48,7 +48,7 @@ function Contact() {
               <a href="https://www.instagram.com/malviprasad/">
                 <i className="fa-brands fa-instagram"></i>
               </a>
-              <a href="https://www.linkedin.com/in/prasad-malvi/?originalSubdomain=in">
+              <a href="https://www.linkedin.com/in/prasad-malvi">
                 <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
