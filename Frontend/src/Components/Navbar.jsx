@@ -4,21 +4,28 @@ import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa"; // Example: Using React Icons
 
 const Navbar = () => {
-  const [scrolling, setScrolling] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+    console.log("Navbar component rendered"); // Debugging: Component rendering
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolling(true);
-      } else {
-        setScrolling(false);
-      }
-    };
+    const [scrolling, setScrolling] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  },);
+    useEffect(() => {
+        console.log("Scroll event listener added"); // Debugging: Event listener addition
+
+        const handleScroll = () => {
+            console.log("Scrolling detected"); // Debugging: Scroll detection
+            if (window.scrollY > 50) {
+                setScrolling(true);
+                console.log("Navbar scrolled");
+            } else {
+                setScrolling(false);
+                console.log("Navbar not scrolled");
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
   return (
     <nav className={`navbar ${scrolling ? "scrolled" : ""}`}>

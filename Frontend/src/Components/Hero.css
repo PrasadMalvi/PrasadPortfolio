@@ -1,4 +1,5 @@
 .hero {
+    position: relative;
     height: 90vh;
     display: flex;
     align-items: center;
@@ -21,7 +22,7 @@
 
 /* Intro Box */
 .intro-box {
-    margin-left: -235px;
+    margin-left: -135px;
     margin-top: -110px;
     background: white;
     padding: 15px 20px;
@@ -162,6 +163,7 @@ z-index: 2;
     animation: fallIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards,
     floatAnimation 2s ease-in-out infinite 1s;
     animation-fill-mode: both;
+    padding-top: 15px;
   }
 /* Positioning Icons Around the Circle */
 .icon.js { top: 2%; left: 40%; color: #f7df1e; }
@@ -267,9 +269,9 @@ z-index: 2;
     align-items: center;
     justify-content: center;
     animation: easeInShape 1s ease-in-out forwards;
-    z-index: -1;
-    margin-top: 500px;
-    margin-left: -1000px;
+    z-index: 0;
+    margin-top: 600px;
+    margin-left: -700px;
     filter: blur(2px);
 
 
@@ -284,134 +286,141 @@ z-index: 2;
     align-items: center;
     justify-content: center;
     animation: easeInShape 1s ease-in-out forwards;
-    z-index: -1;
-    margin-top: 700px;
-    margin-left: -400px;
+    z-index: 0;
+    margin-top: -400px;
+    margin-left: -500px;
     filter: blur(2px);
 
 }
 .circle4 {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     background: linear-gradient(135deg, #542581, #d196ff);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     animation: easeInShape 1s ease-in-out forwards;
-    z-index: -1;
-    margin-top: -600px;
-    margin-left: 1300px;
+    z-index: 0;
+    margin-top: -500px;
+    margin-left: 1400px;
     filter: blur(2px);
 }
 @media screen and (max-width: 768px) {
     .hero {
-        height: 90vh;
-        display:grid;
-        min-width: 490px;
-        margin-top: 150px;
-      }
-    .section-title {
-        font-size: 2rem;
-        margin-bottom: 30px;
-    }
-
-    /* Hero Section */
-    .hero-content {
-        max-width: 500px;
+        min-height: 84vh;
+        height: 84vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
-        margin-left: -445px;
-        margin-top: 140px;
-      }
-      
-
-    /* Reduce Hero Image & Positioning */
-    .hero-image {
+        width: 100%;
         margin-top: 50px;
+        padding: 10px;
     }
 
-    .circle {
-        width: 250px;
-        height: 250px;
-    }
-    .changing-text-circle{
-        margin-top: -100px;
-        font-size: 15px;
-    }
-    .cursor {
-        color: #c8c7f1;
-        font-size: 20px;
-        font-weight: bold;
-        margin-left: 2px;
-        animation: blink 0.7s infinite;
-        margin-top: -300px;
-    }
-    @keyframes blink {
-        50% { opacity: 0; }
-    }    
-    .aniimag {
-        width: 250px;
-        height: 250px;
-    }
-
-    /* Hero Content */
     .hero-content {
         max-width: 100%;
         margin: 0;
+        padding: 10px;
+        margin-top: -100px;
+    }
+
+    .hero-content h1 {
+        font-size: 24px;
     }
 
     .name {
-        font-size: 32px;
+        font-size: 28px;
         padding-left: 0;
     }
 
     .intro-box {
-        margin-left: 0px;
-        width: 180px;
+        width: 160px;
+        font-size: 16px;
+        padding: 30px;
+        margin: 10px auto;
+        margin-top: -150px;
+    }
+
+    .lottie-icon {
+        width: 300px;
+        height: 150px;
+        margin-top: -50px;
+        margin-left: -100px;
+    }
+
+    .hero-image {
+        margin-top: -200px;
+    }
+
+    .circle {
+        width: 200px;
+        height: 200px;
+    }
+
+    .changing-text-circle {
+        font-size: 14px;
+        padding: 5px;
+        margin-top: -100px;
+    }
+
+    .cursor {
         font-size: 18px;
-        padding-left: 100px;
-    }
-    .lottie-icon{
-        margin-top: 10px;
-        padding-left: 50px;
+        margin-top: -250px;
     }
 
-    /* Adjust icons around the hero image */
+    .aniimag {
+        width: 200px;
+        height: 200px;
+        margin-top: 100px;
+    }
+
     .icon {
-        font-size: 40px;
-        width: 75px;
-        height: 75px;
-        padding: 10px;
-        border-radius: 70px;
+    position: absolute;
+    padding-bottom: 0px;
+    padding: 10px;
+    height: 60px;
+    width: 60px;
+    background: linear-gradient(135deg, #542581, #9b34eb);
+    border-radius: 35px;
+    animation: fallIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards,
+    floatAnimation 2s ease-in-out infinite 1s;
+    animation-fill-mode: both;
+    padding-top: 0px;
     }
 
-    .icon.js { top: 2%; left: 35%; }
-    .icon.react { top: 38%; left: -14%; }
-    .icon.node { top: 10%; right: 5%; }
-    .icon.mongo { top: 12%; left: 3%; }
-    .icon.express { top: 38%; right: -10%; }
-    .icon.css { bottom: 10%; right: -2%; }
-    .icon.selenium { bottom: 20%; left: -5%; }
+    /* Adjust icons positions */
+    .icon.js { top: -2%; left: 40%; }
+    .icon.react { top: 35%; left: -30%; }
+    .icon.node { top: 11%; right: -12%; }
+    .icon.mongo { top: 9%; left: -10%; }
+    .icon.express { top: 35%; right: -31%; }
+    .icon.css { bottom: -6%; right: -20%; }
+    .icon.selenium { bottom: 18%; left: -22%; }
 
     /* Social Links */
     .social-links {
-        bottom: 10px;
+        bottom: 50px;
         left: 10px;
-        margin-bottom: 200px;
     }
 
     .social-icon {
-        height: 30px;
-        width: 30px;
-        font-size: 14px;
+        height: 25px;
+        width: 25px;
+        font-size: 12px;
     }
+
     .circle4{
-        margin-left: auto;
+        height: 50px;
+        width: 50px;
+        margin-left: -150px;
+        margin-top: 580px;
     }
     .circle3 {
-        margin-left: 380px;
-        margin-top: -700px;
+        margin-left: 300px;
+        margin-top: -550px;
         height: 100px;
         width: 100px;
     }

@@ -4,7 +4,7 @@
     background-color: #542581;
     color: #c8c7f1;
     text-align: center;
-    margin-left: -8px;
+    margin-left: 0px;
     margin-right: -7px;
   }
   
@@ -135,12 +135,14 @@
 
   .project-title {
     font-size: 2rem;
-    margin-bottom: 30px;
+    margin-top: -45px;
+    padding: 10px;
   }
   .projects-grid {
     grid-template-columns: 1fr; /* Single column layout for mobile */
     gap: 15px;
     padding: 0 15px;
+    margin-right: 5px;
   }
 
   .project-card {
@@ -149,7 +151,10 @@
   }
 
   .project-image-container {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     height: 200px; /* Reduce image height */
+    width: 93%;
   }
 
   .project-image {
@@ -157,15 +162,16 @@
   }
 
   .project-hover-content {
+    width: auto;
     padding: 15px;
   }
 
   .project-title {
     font-size: 1.2rem;
   }
-
   .project-subTitle {
-    font-size: 0.9rem;
+    margin-top: -25px;
+    font-size: 0.8rem;
   }
 
   .tech-stack {
@@ -178,12 +184,18 @@
 }
 
 @media screen and (max-width: 480px) {
+  #work {
+    margin-left: 0px;
+    margin-right: -8px;
+  }
+  
   .project-title {
     font-size: 1.8rem;
   }
 
   .projects-grid {
     padding: 0 10px;
+    
   }
 
   .project-card {
@@ -199,6 +211,7 @@
   }
 
   .project-subTitle {
+    margin-top: -25px;
     font-size: 0.8rem;
   }
 

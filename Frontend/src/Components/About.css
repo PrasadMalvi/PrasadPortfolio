@@ -1,13 +1,13 @@
 /* About Section */
 #about {
-  margin-top: 20px;
-  margin-left: -8px;
+  margin-top: 80px;
+  margin-left: 0px;
   margin-right: -7px;
-  padding: 60px 15px; /* Adjusted padding */
+  padding: 40px 15px; /* Adjusted padding for mobile */
   background: #542581;
   color: #c8c7f1;
   font-family: "Poppins", sans-serif;
-  min-height: 95vh;
+  min-height: auto; /* Adjusted for mobile content flow */
 }
 
 /* Container */
@@ -18,13 +18,14 @@
   justify-content: center;
   max-width: 1100px;
   margin: auto;
-  gap: 30px; /* Adjusted gap */
+  gap: 20px; /* Adjusted gap for mobile */
 }
 
 /* Image */
 .about-image {
-  width: 380px;
-  height: 500px;
+  width: 100%; /* Full width on mobile */
+  max-width: 380px; /* Limit max width */
+  height: auto; /* Auto height on mobile */
   position: relative;
   overflow: hidden;
   border-radius: 15px;
@@ -32,7 +33,7 @@
 
 .about-image img {
   width: 100%;
-  height: 100%;
+  height: auto; /* Auto height for image */
   object-fit: cover;
   transition: opacity 1s ease-in-out;
 }
@@ -54,22 +55,24 @@
 /* Content */
 .about-content {
   flex: 1;
-  max-width: 600px;
+  max-width: 100%; /* Full width on mobile */
   text-align: left;
-  padding: 0 10px; /* Added padding */
+  padding: 0 10px;
 }
 
 .about-title {
-  font-size: 2.8rem;
+  font-size: 2.2rem; /* Adjusted font size for mobile */
   font-weight: bold;
   color: #c8c7f1;
   margin-bottom: 15px;
+  text-align: center; /* Center title on mobile */
 }
 
 .about-description {
-  font-size: 1.1rem;
+  font-size: 1rem; /* Adjusted font size for mobile */
   line-height: 1.6;
   margin-bottom: 20px;
+  text-align: center; /* Center description on mobile */
 }
 
 .highlight {
@@ -80,14 +83,14 @@
 /* Tabs */
 .about-tabs {
   display: flex;
-  gap: 8px; /* Adjusted gap */
+  gap: 8px;
   flex-wrap: wrap;
   margin-bottom: 20px;
   justify-content: center;
 }
 
 .tab-button {
-  padding: 8px 12px; /* Adjusted padding */
+  padding: 6px 10px; /* Adjusted padding for mobile */
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -95,7 +98,7 @@
   background: linear-gradient(135deg, #542581, #9b34eb);
   color: white;
   font-weight: 500;
-  font-size: 0.9rem; /* Adjusted font size */
+  font-size: 0.85rem; /* Adjusted font size for mobile */
 }
 
 .tab-button.active,
@@ -107,7 +110,7 @@
 /* Tab Content */
 .tab-content {
   background: #9b34eb;
-  padding: 15px;
+  padding: 10px; /* Adjusted padding for mobile */
   border-radius: 10px;
   min-width: 100%;
 }
@@ -122,70 +125,43 @@
 }
 
 .download-cv1 {
-  display: inline-block;
+  display: block; /* Changed to block for full width */
+  width: 180px; /* Set a fixed width */
+  margin: 20px auto; /* Centered with auto margins */
   padding: 10px 20px;
   background: linear-gradient(135deg, #542581, #9b34eb);
   color: #c8c7f1;
   text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
-  margin-top: 20px;
   transition: 0.3s;
-  margin-left: 700px;
-  margin-top: 100px;
+  text-align: center; /* Center text */
 }
 
-/* Responsive Design */
+/* Responsive Design (Refined) */
 @media (max-width: 768px) {
-  #about{
-    width: 520px;
-    margin-left: -20px;
+  #about {
+    margin-left: 0;
+    margin-right: 0;
   }
+
   .about-container {
     flex-direction: column;
     text-align: center;
-    width: 500px;
+    width: 100%; /* Full width on mobile */
   }
 
   .about-image {
-    width: 0%; /* Adjusted image width */
-    height: auto;
-    max-height: 600px;
+    width: 100%;
+    max-height: 500px;
   }
 
   .about-content {
-    max-width: 100%;
-    text-align: center;
-    padding: 0 5px; /* Added padding for content*/
-  }
-
-  .about-title {
-    font-size: 2.2rem;
-  }
-
-  .tab-button {
-    padding: 6px 10px; /* Further adjusted padding */
-    font-size: 0.85rem; /* Further adjusted font size */
-  }
-
-  .about-description {
-    font-size: 1rem; /* Adjusted description font size*/
-  }
-
-  .tab-content {
-    padding: 10px; /* Adjusted Tab content padding*/
-  }
-  .download-cv1 {
-    margin-left: 180px;
-    margin-top: 10px;
+    padding: 0 5px;
   }
 }
 
 @media (max-width: 480px) {
-  .about-image {
-    width: 100%;
-  }
-
   .about-title {
     font-size: 2rem;
   }
