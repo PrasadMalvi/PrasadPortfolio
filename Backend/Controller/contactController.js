@@ -8,6 +8,7 @@ exports.submitContactForm = async (req, res) => {
       return res.status(400).json({ error: "All fields are required" });
     }
 
+    // Create a new Contact document
     const newContact = new Contact({ name, email, message });
     await newContact.save();
 
