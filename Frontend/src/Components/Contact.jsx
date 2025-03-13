@@ -13,7 +13,7 @@ function Contact() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5050/api/contact/submit", {
+      const response = await fetch("https://prasadportfolio.onrender.com/api/contact/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
