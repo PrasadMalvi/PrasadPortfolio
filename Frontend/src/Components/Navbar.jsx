@@ -4,6 +4,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,12 +25,21 @@ const Navbar = () => {
         <img src={logo} alt="Logo" className="logo" />
       </div>
 
-      {/* Center - Navigation Links */}
-      <div className="nav-links-container">
+      {/* Hamburger Button for Mobile */}
+      <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        ☰
+      </button>
+
+      {/* Navigation Links */}
+      <div className={`nav-links-container ${menuOpen ? "open" : ""}`}>
         <ul className="nav-links">
           {["Home", "About", "Skills", "Work", "Contact"].map((item) => (
             <li key={item} className="nav-item">
-              <a href={`#${item.toLowerCase()}`} className="nav-link">
+              <a
+                href={`#${item.toLowerCase()}`}
+                className="nav-link"
+                onClick={() => setMenuOpen(false)} // Close menu on click
+              >
                 {item}
               </a>
               <span className="nav-underline"></span>

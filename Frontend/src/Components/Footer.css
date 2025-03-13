@@ -1,31 +1,52 @@
 /* Footer Styles */
 .footer {
-    background: #542581;
-    color: #c8c7f1;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 16px;
-    margin-left: -8px;
-    margin-right: -7px;
-    margin-bottom: -7px;
-  }
-  
-  .footer .heart-icon {
-    color: #ff4081;
-    margin: 0 5px;
-    animation: heartbeat 1.5s infinite;
-  }
-  
-  /* Heartbeat Animation */
-  @keyframes heartbeat {
-    0% {
+  background: #542581;
+  color: #c8c7f1;
+  text-align: center;
+  padding: 20px 15px;
+  font-size: 16px;
+  margin-left: -8px;
+  margin-right: -7px;
+  margin-bottom: -7px;
+  position: relative;
+  width: 100%;
+}
+
+/* Footer Text */
+.footer p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Heart Icon Animation */
+.footer .heart-icon {
+  color: #ff4081;
+  margin: 0 5px;
+  animation: heartbeat 1.5s infinite ease-in-out;
+}
+
+/* Heartbeat Animation */
+@keyframes heartbeat {
+  0% {
       transform: scale(1);
-    }
-    50% {
-      transform: scale(1.2);
-    }
-    100% {
-      transform: scale(1);
-    }
   }
-  
+  50% {
+      transform: scale(1.3);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer {
+      padding: 15px;
+      font-size: 14px;
+  }
+
+  .footer p {
+      font-size: 13px;
+  }
+}

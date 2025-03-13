@@ -140,3 +140,68 @@
     margin-top: 5px;
   }
   
+  /* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  #skills {
+    padding: 50px 0;
+  }
+
+  .skills-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .category-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* Adjust grid size */
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .skill-card {
+    width: 90px;
+    height: 90px;
+    padding: 8px;
+  }
+
+  .skill-icon {
+    font-size: 2rem; /* Reduce icon size */
+  }
+
+  .skill-name {
+    font-size: 0.75rem; /* Adjust text size */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .skills-title {
+    font-size: 1.8rem;
+  }
+
+  .category-title {
+    font-size: 1.2rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr); /* Force 3 columns for better spacing */
+    gap: 10px;
+  }
+
+  .skill-card {
+    width: 80px;
+    height: 80px;
+    padding: 6px;
+  }
+
+  .skill-icon {
+    font-size: 1.8rem;
+  }
+
+  .skill-name {
+    font-size: 0.7rem;
+  }
+}

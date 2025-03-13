@@ -125,3 +125,87 @@
     color: #9b34eb;
   }
   
+  /* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  #work {
+    padding: 50px 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr; /* Single column layout for mobile */
+    gap: 15px;
+    padding: 0 15px;
+  }
+
+  .project-card {
+    width: 90%;
+    margin: 0 auto; /* Center align cards */
+  }
+
+  .project-image-container {
+    height: 200px; /* Reduce image height */
+  }
+
+  .project-image {
+    height: 100%;
+  }
+
+  .project-hover-content {
+    padding: 15px;
+  }
+
+  .project-title {
+    font-size: 1.2rem;
+  }
+
+  .project-subTitle {
+    font-size: 0.9rem;
+  }
+
+  .tech-stack {
+    font-size: 0.8rem;
+  }
+
+  .github-link {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .projects-grid {
+    padding: 0 10px;
+  }
+
+  .project-card {
+    width: 100%;
+  }
+
+  .project-image-container {
+    height: 180px;
+  }
+
+  .project-title {
+    font-size: 1rem;
+  }
+
+  .project-subTitle {
+    font-size: 0.8rem;
+  }
+
+  .tech-stack {
+    font-size: 0.7rem;
+  }
+
+  .github-link {
+    font-size: 0.85rem;
+  }
+}

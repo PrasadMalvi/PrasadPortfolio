@@ -76,3 +76,58 @@
 .nav-item:hover .nav-underline {
   width: 100%;
 }
+/* Mobile Navbar */
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  .logo {
+    width: 180px;
+    height: 65px;
+    margin-left: 10px;
+  }
+
+  .nav-links-container {
+    display: none; /* Hide links initially */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background: #c8c7f1;
+    padding: 15px 0;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .nav-links-container.open {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 15px;
+    padding: 0;
+  }
+
+  .nav-item {
+    padding: 10px 0;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #542581;
+  }
+}
+
+/* Default styles for larger screens */
+@media screen and (min-width: 769px) {
+  .hamburger {
+    display: none;
+  }
+}

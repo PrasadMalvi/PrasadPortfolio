@@ -1,5 +1,4 @@
-  /* Hero Section */
-  .hero {
+.hero {
     height: 90vh;
     display: flex;
     align-items: center;
@@ -9,7 +8,8 @@
     color: white;
     padding: 20px;
     width: 95%;
-}
+  }
+  
   
 /* Left Content */
 .hero-content {
@@ -304,4 +304,90 @@ z-index: 2;
     margin-top: -600px;
     margin-left: 1300px;
     filter: blur(2px);
+}
+@media screen and (max-width: 768px) {
+    /* General Section Styling */
+    #work {
+        padding: 50px 10px;
+        margin: 0; /* Remove negative margins */
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    /* Adjust project grid for single-column on smaller screens */
+    .projects-grid {
+        grid-template-columns: 1fr; /* Single-column layout */
+        gap: 15px;
+    }
+
+    /* Hero Section */
+    .hero-content {
+        max-width: 500px;
+        text-align: center;
+        margin-left: -465px;
+        margin-top: 140px;
+      }
+      
+
+    /* Reduce Hero Image & Positioning */
+    .hero-image {
+        margin-top: 50px;
+    }
+
+    .circle {
+        width: 250px;
+        height: 250px;
+    }
+
+    .aniimag {
+        width: 250px;
+        height: 250px;
+    }
+
+    /* Hero Content */
+    .hero-content {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .name {
+        font-size: 32px;
+        padding-left: 0;
+    }
+
+    .intro-box {
+        margin-left: 0;
+        width: 180px;
+        font-size: 18px;
+    }
+
+    /* Adjust icons around the hero image */
+    .icon {
+        font-size: 40px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .icon.js { top: 2%; left: 35%; }
+    .icon.react { top: 38%; left: 5%; }
+    .icon.node { top: 15%; right: 10%; }
+    .icon.mongo { top: 15%; left: 10%; }
+    .icon.express { top: 45%; right: 5%; }
+    .icon.css { bottom: 15%; right: 15%; }
+    .icon.selenium { bottom: 20%; left: 10%; }
+
+    /* Social Links */
+    .social-links {
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .social-icon {
+        height: 30px;
+        width: 30px;
+        font-size: 14px;
+    }
 }
