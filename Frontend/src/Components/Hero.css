@@ -306,28 +306,22 @@ z-index: 2;
     filter: blur(2px);
 }
 @media screen and (max-width: 768px) {
-    /* General Section Styling */
-    #work {
-        padding: 50px 10px;
-        margin: 0; /* Remove negative margins */
-    }
-
+    .hero {
+        height: 90vh;
+        display:grid;
+        min-width: 490px;
+        margin-top: 150px;
+      }
     .section-title {
         font-size: 2rem;
         margin-bottom: 30px;
-    }
-
-    /* Adjust project grid for single-column on smaller screens */
-    .projects-grid {
-        grid-template-columns: 1fr; /* Single-column layout */
-        gap: 15px;
     }
 
     /* Hero Section */
     .hero-content {
         max-width: 500px;
         text-align: center;
-        margin-left: -465px;
+        margin-left: -445px;
         margin-top: 140px;
       }
       
@@ -341,7 +335,21 @@ z-index: 2;
         width: 250px;
         height: 250px;
     }
-
+    .changing-text-circle{
+        margin-top: -100px;
+        font-size: 15px;
+    }
+    .cursor {
+        color: #c8c7f1;
+        font-size: 20px;
+        font-weight: bold;
+        margin-left: 2px;
+        animation: blink 0.7s infinite;
+        margin-top: -300px;
+    }
+    @keyframes blink {
+        50% { opacity: 0; }
+    }    
     .aniimag {
         width: 250px;
         height: 250px;
@@ -359,35 +367,55 @@ z-index: 2;
     }
 
     .intro-box {
-        margin-left: 0;
+        margin-left: 0px;
         width: 180px;
         font-size: 18px;
+        padding-left: 100px;
+    }
+    .lottie-icon{
+        margin-top: 10px;
+        padding-left: 50px;
     }
 
     /* Adjust icons around the hero image */
     .icon {
         font-size: 40px;
-        width: 60px;
-        height: 60px;
+        width: 75px;
+        height: 75px;
+        padding: 10px;
+        border-radius: 70px;
     }
 
     .icon.js { top: 2%; left: 35%; }
-    .icon.react { top: 38%; left: 5%; }
-    .icon.node { top: 15%; right: 10%; }
-    .icon.mongo { top: 15%; left: 10%; }
-    .icon.express { top: 45%; right: 5%; }
-    .icon.css { bottom: 15%; right: 15%; }
-    .icon.selenium { bottom: 20%; left: 10%; }
+    .icon.react { top: 38%; left: -14%; }
+    .icon.node { top: 10%; right: 5%; }
+    .icon.mongo { top: 12%; left: 3%; }
+    .icon.express { top: 38%; right: -10%; }
+    .icon.css { bottom: 10%; right: -2%; }
+    .icon.selenium { bottom: 20%; left: -5%; }
 
     /* Social Links */
     .social-links {
         bottom: 10px;
         left: 10px;
+        margin-bottom: 200px;
     }
 
     .social-icon {
         height: 30px;
         width: 30px;
         font-size: 14px;
+    }
+    .circle4{
+        margin-left: auto;
+    }
+    .circle3 {
+        margin-left: 380px;
+        margin-top: -700px;
+        height: 100px;
+        width: 100px;
+    }
+    .circle2{
+        display: none;
     }
 }

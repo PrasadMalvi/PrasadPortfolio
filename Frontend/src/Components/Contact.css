@@ -142,6 +142,10 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  #contact{
+    width: 510px;
+    margin-left: -20px;
+  }
   .contact-wrapper {
       flex-direction: column;
       text-align: center;
@@ -158,4 +162,8 @@
   .container {
       width: 90%;
   }
+  .contact-right input,
+.contact-right textarea {
+  width: auto;
+}
 }

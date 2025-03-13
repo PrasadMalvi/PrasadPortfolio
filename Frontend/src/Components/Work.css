@@ -8,7 +8,7 @@
     margin-right: -7px;
   }
   
-  .section-title {
+  .project-title {
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 40px;
@@ -129,13 +129,14 @@
 @media screen and (max-width: 768px) {
   #work {
     padding: 50px 0;
+    width: 550px;
+    margin-left: -20px;
   }
 
-  .section-title {
+  .project-title {
     font-size: 2rem;
     margin-bottom: 30px;
   }
-
   .projects-grid {
     grid-template-columns: 1fr; /* Single column layout for mobile */
     gap: 15px;
@@ -177,7 +178,7 @@
 }
 
 @media screen and (max-width: 480px) {
-  .section-title {
+  .project-title {
     font-size: 1.8rem;
   }
 

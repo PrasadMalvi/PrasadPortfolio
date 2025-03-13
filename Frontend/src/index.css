@@ -9,5 +9,20 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+    padding: 10px;
+  }
 
+  .container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .some-element {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 

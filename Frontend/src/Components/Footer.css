@@ -42,8 +42,11 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .footer {
-      padding: 15px;
+    width: 490px;
+    margin-left: -20px;
+      padding: 30px;
       font-size: 14px;
+      margin-bottom: -30px;
   }
 
   .footer p {
