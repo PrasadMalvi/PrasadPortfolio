@@ -4,16 +4,20 @@ const Analytics = require("../Models/AnalyticsSchema"); // ✅ Import correctly
 
 exports.trackVisitor = async (req, res) => {
   try {
-    const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress; // Get IP
-    const userAgent = req.headers["user-agent"]; // Get browser info
+    console.log("Received tracking request:", req.body);
 
-    // Check if visitor already exists
+    const ip =
+      req.ip || req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+    const userAgent = req.headers["user-agent"];
+
     let visitor = await Analytics.findOne({ ipAddress: ip });
 
     if (visitor) {
-      visitor.pageViews += 1; // Increment page views
+      visitor.pageViews += 1;
+      console.log("Updating visitor:", visitor);
     } else {
       visitor = new Analytics({ ipAddress: ip, userAgent });
+      console.log("New visitor created:", visitor);
     }
 
     await visitor.save();
