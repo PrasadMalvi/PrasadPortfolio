@@ -1,3 +1,13 @@
+/* index.css */
+
+/* Reset and Normalization (Basic) */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-size: 100%; /* Reset font size to default */
+}
+
+/* Root Font Size and Base Styles */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -7,24 +17,31 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px; /* Base font size */
 }
 
 body {
   overflow-x: hidden; /* Prevents horizontal scrolling */
+  font-size: 1rem; /* Base body text size */
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
+/* Media Queries for Mobile Responsiveness */
 @media screen and (max-width: 768px) {
   body {
     font-size: 14px;
     padding: 10px;
   }
 
-  .container {
+  .container { /* Example container class - adjust as needed */
     width: 100%;
     padding: 10px;
   }
 
-  .some-element {
+  .some-element { /* Example element class - adjust as needed */
     flex-direction: column;
     align-items: center;
   }

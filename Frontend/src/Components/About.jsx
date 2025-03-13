@@ -93,7 +93,7 @@ function About() {
                       <ul>
                         <li>Software Development Life Cycle (SDLC)</li>
                         <li>Software Testing Life Cycle (STLC)</li>
-                        <li>Functional testing methodologies (Sanity, Smoke, Regression, Cross-browser, and Integration testing).</li>
+                        <li>Functional testing methodologies (Sanity, Smoke, Regression, Cross-browser, Compatibility, and Integration testing).</li>
                       </ul>
                     </li>
                   </ul>
@@ -102,7 +102,11 @@ function About() {
 
           </div>
         </div>
+        
       </div>
+      <a href="PrasadAMalviSDE1.pdf" download className="download-cv1">
+              Download CV
+            </a>
     </section>
   );
 }
