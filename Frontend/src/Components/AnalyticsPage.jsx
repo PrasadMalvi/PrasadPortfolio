@@ -6,7 +6,7 @@ const AnalyticsPage = () => {
   useEffect(() => {
     const fetchAnalytics = async () => {
       try {
-        const response = await fetch("https://prasadportfolio.onrender.com/api/analytics");
+        const response = await fetch("https://prasadportfolio.onrender.com/api/visitor/analytics");
         if (!response.ok) throw new Error("Failed to fetch analytics");
         const data = await response.json();
         setAnalytics(data);

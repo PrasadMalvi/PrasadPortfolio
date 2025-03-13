@@ -5,7 +5,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const trackVisitor = async () => {
   try {
-    await fetch("https://prasadportfolio.onrender.com/api/track", {
+    await fetch("https://prasadportfolio.onrender.com/api/visitor/track", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
