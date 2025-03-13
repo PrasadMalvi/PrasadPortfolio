@@ -2,8 +2,6 @@ const Analytics = require("../Models/AnalyticsSchema");
 
 // 📌 Track Visitor
 
-const Analytics = require("../Models/AnalyticsSchema");
-
 exports.trackVisitor = async (req, res) => {
   try {
     const ip =
