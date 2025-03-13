@@ -1,39 +1,29 @@
 import { useState, useEffect } from "react";
 import logo from "../assets/Plogo.png";
 import "./Navbar.css";
-import { FaBars, FaTimes } from "react-icons/fa"; // Example: Using React Icons
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
-    console.log("Navbar component rendered"); // Debugging: Component rendering
+  const [scrolling, setScrolling] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-    const [scrolling, setScrolling] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      console.log("ScrollY:", window.scrollY); // Debugging: Check Scroll Position
+      setScrolling(window.scrollY > 50);
+    };
 
-    useEffect(() => {
-        console.log("Scroll event listener added"); // Debugging: Event listener addition
-
-        const handleScroll = () => {
-            console.log("Scrolling detected"); // Debugging: Scroll detection
-            if (window.scrollY > 50) {
-                setScrolling(true);
-                console.log("Navbar scrolled");
-            } else {
-                setScrolling(false);
-                console.log("Navbar not scrolled");
-            }
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className={`navbar ${scrolling ? "scrolled" : ""}`}>
+    <nav className={`navbar ${scrolling ? "scrolled" : ""}`} role="navigation">
       <div className="logo-container">
         <img src={logo} alt="Logo" className="logo" />
       </div>
 
-      {/* Hamburger Button for Mobile */}
+      {/* Hamburger Button */}
       <button
         className="hamburger"
         onClick={() => setMenuOpen(!menuOpen)}
@@ -51,7 +41,7 @@ const Navbar = () => {
               <a
                 href={`#${item.toLowerCase()}`}
                 className="nav-link"
-                onClick={() => setMenuOpen(false)} // Close menu on click
+                onClick={() => setMenuOpen(false)}
               >
                 {item}
               </a>

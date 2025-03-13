@@ -16,14 +16,14 @@
 .hero-content {
     max-width: 500px;
     text-align: center; /* Center align content */
-    margin-left: -465px;
+    margin-left: -355px;
     margin-top: 140px;
 }
 
 /* Intro Box */
 .intro-box {
-    margin-left: -135px;
-    margin-top: -110px;
+    margin-left: -155px;
+    margin-top: -100px;
     background: white;
     padding: 15px 20px;
     border-radius: 10px;
@@ -34,7 +34,6 @@
     align-items: center;
     justify-content: center;
     height: 80px;
-    width: 200px;
 }
 
 /* Align Lottie and Text in the Same Line */
@@ -42,15 +41,15 @@
     display: flex;
     align-items: center;
     gap: 10px; /* Space between Lottie & Text */
-    width: 250px;
+    width: 350px;
 }
 
 /* Lottie Animation */
 .lottie-icon {
     width: 550px; /* Adjust size */
     height: 250px;
-    margin-top: -100px;
-    margin-left: -250px;
+    margin-top: -150px;
+    margin-left: -80px;
 z-index: 2;
 }
 
@@ -333,7 +332,7 @@ z-index: 2;
 
     .name {
         font-size: 28px;
-        padding-left: 0;
+        padding-left: 25px;
     }
 
     .intro-box {
@@ -348,7 +347,7 @@ z-index: 2;
         width: 300px;
         height: 150px;
         margin-top: -50px;
-        margin-left: -100px;
+        margin-left: -80px;
     }
 
     .hero-image {
