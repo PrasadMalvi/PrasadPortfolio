@@ -4,7 +4,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const projects = [
   {
-    title: "Home Care - Nursing Site",
+    title: "Home Care",
     subTitle:"Nursing Service Management Website",
     techStack: "Next.js, TypeScript, Google Forms, Vercel",
     description:
@@ -34,7 +34,7 @@ const projects = [
     github: "https://github.com/PrasadMalvi/ParkMate-Parking-App",
   },
   {
-    title: "GLOWNIUS",
+    title: "Glownius",
     subTitle:"Skincare E-commerce Web Application",
     techStack: "MERN, Mongoose, Multer",
     description:
@@ -44,7 +44,7 @@ const projects = [
     github: "https://github.com/PrasadMalvi/SkinCare",
   },
   {
-    title: "TEACHHIRE.COM",
+    title: "Teachhire.com",
     subTitle:"Teacher Hiring Web Application",
     techStack: "React, Node.js, Express",
     description:
