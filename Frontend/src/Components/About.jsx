@@ -23,6 +23,7 @@ function About() {
   return (
     <section id="about">
       <div className="about-container">
+        {/* Accomplishments Section */}
         {/* Left Side - Image Slider */}
         <div className="about-image">
           <img
@@ -37,15 +38,16 @@ function About() {
         <div className="about-content">
           <h1 className="about-title">About Me</h1>
           <p className="about-description">
-            Hello! I'm <span className="highlight">Prasad Malvi</span>, an MCA Graduate from Bangalore, working as an 
-            <span className="highlight"> SDE-1 Full Stack Developer (MERN, React Native)</span>. I specialize in 
-            building high-performance web and mobile applications with a passion for real-time applications, scalability, and problem-solving.
-            My expertise includes JavaScript, AWS, and software testing.
+            Hello! I'm <span className="highlight">Prasad Malvi</span>, an MCA Graduate from Bangalore, currently working as a 
+            <span className="highlight"> Software Engineer at Kerv Digital</span> specializing in 
+            <span className="highlight"> Full Stack Development (MERN, React Native)</span>. I specialize in 
+            building high-performance web and mobile applications with a passion for real-time applications, scalability, microservices architecture, and problem-solving.
+            My expertise includes TypeScript, React, Next.js, PostgreSQL, AWS, and automated testing.
           </p>
 
           {/* Tabs for Skills, Education, Certificates */}
           <div className="about-tabs">
-            {["education", "certificate", "training"].map((tab) => (
+            {["education", "certificate", "training", "awards"].map((tab) => (
               <button
                 key={tab}
                 className={`tab-button ${activeTab === tab ? "active" : ""}`}
@@ -99,12 +101,22 @@ function About() {
                   </ul>
                 </div>
               )}
+            {activeTab === "awards" && (
+              <div>
+                <strong>Legend Award - Persistence Category</strong> <span>(Mar 2026)</span>
+                <p><strong>Kerv Digital - Bangalore</strong></p>
+                <p style={{fontSize: "0.95rem", fontStyle: "italic", marginTop: "10px", color: "#d4a5d4"}}>
+                  "Prasad is an exceptional graduate engineer. He consistently delivers high-quality output and always goes above and beyond expectations. He supports all his team members without ever letting his own deliverables slip. To an outsider, he would never appear as a fresher as he operates at the level of a lead engineer. He is already a strong technology expert in the full-stack domain. I cannot express enough gratitude for the impact he has created on the project."
+                </p>
+                <p style={{fontSize: "0.9rem", marginTop: "8px"}}>- Naveen Kumar R (Team Lead, Kerv Digital)</p>
+              </div>
+            )}
 
           </div>
         </div>
         
       </div>
-      <a href="PrasadAMalviSDE1.pdf" download className="download-cv1">
+      <a href="PrasadResume2026.pdf" download className="download-cv1">
               Download CV
             </a>
     </section>

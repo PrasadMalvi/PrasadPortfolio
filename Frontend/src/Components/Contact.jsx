@@ -13,7 +13,7 @@ function Contact() {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://prasadportfolio.onrender.com/api/contact/submit", {
+      const response = await fetch("http://localhost:5050/api/contact/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -22,13 +22,13 @@ function Contact() {
       const result = await response.json();
 
       if (response.ok) {
-        setMsg("Prasad will get back to you!");
+        setMsg("✅ Message sent! Prasad will get back to you soon.");
         setFormData({ name: "", email: "", message: "" }); // Reset form
       } else {
-        setMsg(result.error || "Failed to send message.");
+        setMsg("❌ Failed to send message. Please try again.");
       }
 
-      setTimeout(() => setMsg(""), 3000);
+      setTimeout(() => setMsg(""), 5000);
     } catch (error) {
       console.error("Error submitting form:", error);
       setMsg("Server error. Please try again later.");
@@ -55,7 +55,7 @@ function Contact() {
             </div>
 
             {/* Download CV Button */}
-            <a href="PrasadAMalviSDE1.pdf" download className="download-cv">Download CV</a>
+            <a href="PrasadResume2026.pdf" download className="download-cv">Download CV</a>
           </div>
 
           {/* Right Section - Contact Form */}

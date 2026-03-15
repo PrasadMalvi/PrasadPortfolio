@@ -4,7 +4,17 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const projects = [
   {
-    title: "SwipeMate",
+    title: "Home Care - Nursing Site",
+    subTitle:"Nursing Service Management Website",
+    techStack: "Next.js, TypeScript, Google Forms, Vercel",
+    description:
+      "A responsive information and service management website for nursing services with Google Forms integration and secure admin login.",
+    animationSrc: "https://lottie.host/159ee75c-5131-4329-a7a0-fb634eb6348b/sF41aDgllz.lottie",
+    icon: "fa-solid fa-hospital",
+    github: "#",
+  },
+  {
+    title: "Luvio",
     subTitle:"Real-Time Dating App",
     techStack: "MERN, React Native, Socket.IO",
     description:

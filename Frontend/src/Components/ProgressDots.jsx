@@ -1,51 +1,50 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProgressDots.css";
 
 const ProgressDots = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const scrollTimeout = useRef(null); // Added useRef for timeout
+  const [totalSections, setTotalSections] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
-      }
+    const sections = document.querySelectorAll("section");
+    setTotalSections(sections.length);
 
-      scrollTimeout.current = setTimeout(() => {
-        const sections = document.querySelectorAll("section");
-        let index = sections.length - 1;
-
-        sections.forEach((section, i) => {
-          const rect = section.getBoundingClientRect();
-          // Adjusted detection logic for better mobile accuracy
-          if (rect.top <= window.innerHeight * 0.6 && rect.bottom >= window.innerHeight * 0.1) {
-            index = i;
-          }
-        });
-
-        setActiveIndex(index);
-      }, 100); // Debounce scroll events
+    // Create an IntersectionObserver
+    const options = {
+      threshold: 0.3, // Trigger when 30% of section is visible
+      rootMargin: "0px 0px -50% 0px" // Detect when top 50% of viewport
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("touchmove", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
-    handleScroll();
+    const callback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionArray = Array.from(sections);
+          const index = sectionArray.indexOf(entry.target);
+          setActiveIndex(index);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("touchmove", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
-      }
+      sections.forEach((section) => {
+        observer.unobserve(section);
+      });
     };
   }, []);
 
   return (
     <div className="progress-bar">
-      {[...Array(5)].map((_, index) => (
-        <span key={index} className={`dot ${index === activeIndex ? "active" : ""}`}></span>
+      {[...Array(totalSections)].map((_, index) => (
+        <span
+          key={index}
+          className={`dot ${index === activeIndex ? "active" : ""}`}
+        ></span>
       ))}
     </div>
   );
