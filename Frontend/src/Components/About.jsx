@@ -1,124 +1,157 @@
-import React, { useState, useEffect } from "react";
-import "./About.css";
-import A1 from "../assets/A1.jpg";
-import A2 from "../assets/A2.jpg";
-import A3 from "../assets/A3.jpg";
-
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import A1 from '../assets/A1.jpg';
+import A2 from '../assets/A2.jpg';
+import A3 from '../assets/A3.jpg';
+import './About.css';
 
 function About() {
-  const [activeTab, setActiveTab] = useState("education");
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
 
-  const images = [A1, A2, A3];
-
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Change image every 5 seconds
-
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
+  const xBg = useTransform(scrollYProgress, [0, 1], ["-10%", "20%"]);
 
   return (
-    <section id="about">
-      <div className="about-container">
-        {/* Accomplishments Section */}
-        {/* Left Side - Image Slider */}
-        <div className="about-image">
-          <img
-            key={currentImageIndex}
-            src={images[currentImageIndex]}
-            alt="About"
-            className="fade-in"
-          />
-        </div>
-
-        {/* Right Side - Text Content */}
-        <div className="about-content">
-          <h1 className="about-title">About Me</h1>
-          <p className="about-description">
-            Hello! I'm <span className="highlight">Prasad Malvi</span>, an MCA Graduate from Bangalore, currently working as a 
-            <span className="highlight"> Software Engineer at Kerv Digital</span> specializing in 
-            <span className="highlight"> Full Stack Development (MERN, React Native)</span>. I specialize in 
-            building high-performance web and mobile applications with a passion for real-time applications, scalability, microservices architecture, and problem-solving.
-            My expertise includes TypeScript, React, Next.js, PostgreSQL, AWS, and automated testing.
-          </p>
-
-          {/* Tabs for Skills, Education, Certificates */}
-          <div className="about-tabs">
-            {["education", "certificate", "training", "awards"].map((tab) => (
-              <button
-                key={tab}
-                className={`tab-button ${activeTab === tab ? "active" : ""}`}
-                onClick={() => setActiveTab(tab)}
+    <section id="about" data-label="About" className="about-v3" ref={containerRef}>
+      <motion.div 
+        className="bg-text-layer bg-text-outline"
+        style={{ x: xBg, top: '20%' }}
+      >
+        IDENTITY // ARCHIVE
+      </motion.div>
+      <div className="container">
+        <div className="about-layout">
+          
+          <div className="about-sticky-side">
+            <div className="section-num">02 // ARCHIVE.IDENTITY</div>
+            <h2 className="about-title">CRAFTING <br/> THE <span className="outline-text">DIGITAL SELF</span></h2>
+            
+            <div className="profile-grid-v3">
+              <motion.div 
+                className="profile-frame-wrap large"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
               >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </button>
-            ))}
+                <img src={A1} alt="Prasad Malvi Main" className="profile-img-v3" />
+              </motion.div>
+              <motion.div 
+                className="profile-frame-wrap small"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+              >
+                <img src={A2} alt="Prasad Malvi Detail" className="profile-img-v3" />
+              </motion.div>
+              <motion.div 
+                className="profile-frame-wrap small"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <img src={A3} alt="Prasad Malvi Snapshot" className="profile-img-v3" />
+              </motion.div>
+            </div>
+
+            <div className="experience-summary">
+              <div className="summary-item">
+                <span className="val">1YR+</span>
+                <span className="lbl">EXPERIENCE</span>
+              </div>
+              <div className="summary-item">
+                <span className="val">AWARD</span>
+                <span className="lbl">FUTURE LEADER</span>
+              </div>
+            </div>
           </div>
 
-          {/* Tab Content */}
-          <div className="tab-content">
-            {activeTab === "education" && (
-              <ul>
-                <li><strong>MCA (2024):</strong> Christ Academy Institute for Advanced Studies, Bangalore.</li>
-                <li><strong>BCA (2022):</strong> KLE Society’s Shri Mrutyunjaya BCA College, Dharwad.</li>
-                <li><strong>PU (2019):</strong> Shri Shivaji Govt College, Haliyal.</li>
-              </ul>
-            )}
+          <div className="about-content-side">
+            <div className="content-block">
+              <span className="block-label">CORE PHILOSOPHY</span>
+              <p className="description">
+                Currently making an impact at <strong className="text-white">Kerv Digital</strong> as a Software Engineer. 
+                I focus on translating complex business requirements into fluid, efficient digital experiences while 
+                maintaining high standards for code quality and user performance.
+              </p>
+              <p className="description">
+                Recognized as a <strong className="text-white">Future Leader</strong> for my contributions and growth, 
+                I combine my professional experience with my <strong className="text-white">freelance work</strong> to 
+                deliver scalable solutions across web and mobile platforms.
+              </p>
+            </div>
 
-            {activeTab === "certificate" && (
-              <ul>
-                <li><strong>AWS Certified Developer Associate:</strong> Udemy (Ongoing).</li>
-                <li><strong>MERN Full Stack Development:</strong> Prinston Smart Engineers (Jan 2024).</li>
-                <li><strong>React, NodeJS, Express & MongoDB - MERN
-                  Fullstack
-                  :</strong> Udemy (March 2024).</li>
-                <li><strong>Hackathon Participation:</strong> Developed an AI-powered game generator frontend.</li>
-              </ul>
-            )}
-            {activeTab === "training" && (
-                <div>
-                  <strong>Software Testing Trainee</strong> <span>(Jan 2025)</span>
-                  <p><strong>Besant Technologies - Bangalore</strong></p>
-                  <ul>
-                    <li>Gained practical experience in manual testing by working with web applications in the e-commerce and travel domains.</li>
-                    <li>Proficient in black-box testing techniques, including:
-                      <ul>
-                        <li>Boundary Value Analysis (BVA)</li>
-                        <li>Equivalence Partitioning</li>
-                        <li>State Transition Testing</li>
-                      </ul>
-                    </li>
-                    <li>Focused on the practical application of:
-                      <ul>
-                        <li>Software Development Life Cycle (SDLC)</li>
-                        <li>Software Testing Life Cycle (STLC)</li>
-                        <li>Functional testing methodologies (Sanity, Smoke, Regression, Cross-browser, Compatibility, and Integration testing).</li>
-                      </ul>
-                    </li>
-                  </ul>
+            <div className="content-block">
+              <span className="block-label">PROFESSIONAL FOOTPRINT</span>
+              
+              <div className="archive-item">
+                <div className="year">PRESENT</div>
+                <div className="details">
+                  <h4>Software Engineer // Kerv Digital</h4>
+                  <p>Architecting enterprise web solutions and optimizing cloud-native delivery pipelines.</p>
                 </div>
-              )}
-            {activeTab === "awards" && (
-              <div>
-                <strong>Legend Award - Persistence Category</strong> <span>(Mar 2026)</span>
-                <p><strong>Kerv Digital - Bangalore</strong></p>
-                <p style={{fontSize: "0.95rem", fontStyle: "italic", marginTop: "10px", color: "#d4a5d4"}}>
-                  "Prasad is an exceptional graduate engineer. He consistently delivers high-quality output and always goes above and beyond expectations. He supports all his team members without ever letting his own deliverables slip. To an outsider, he would never appear as a fresher as he operates at the level of a lead engineer. He is already a strong technology expert in the full-stack domain. I cannot express enough gratitude for the impact he has created on the project."
-                </p>
-                <p style={{fontSize: "0.9rem", marginTop: "8px"}}>- Naveen Kumar R (Team Lead, Kerv Digital)</p>
               </div>
-            )}
 
+              <div className="archive-item">
+                <div className="year">2024</div>
+                <div className="details">
+                  <h4>Full Stack Developer // Freelance</h4>
+                  <p>Partnering with global startups to build scalable MVP architectures and mobile ecosystems.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="content-block">
+              <span className="block-label">ACADEMIC TIMELINE</span>
+              
+              <div className="archive-item">
+                <div className="year">2024</div>
+                <div className="details">
+                  <h4>MCA // Masters of Computer Applications</h4>
+                  <p>Christ Academy Institute for Advanced Studies, Bangalore</p>
+                </div>
+              </div>
+
+              <div className="archive-item">
+                <div className="year">2022</div>
+                <div className="details">
+                  <h4>BCA // Bachelors of Computer Applications</h4>
+                  <p>KLE Society’s Shri Mrutyunjaya BCA College, Dharwad</p>
+                </div>
+              </div>
+
+              <div className="archive-item">
+                <div className="year">2019</div>
+                <div className="details">
+                  <h4>PU // Pre-University Foundation</h4>
+                  <p>Shri Shivaji Govt College, Haliyal</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="content-block">
+              <span className="block-label">PROFESSIONAL SPECIALIZATION</span>
+              
+              <div className="archive-item">
+                <div className="year">HONORS</div>
+                <div className="details">
+                  <h4>Future Leader Award</h4>
+                  <p>Recognized at Kerv Digital for exceptional contribution and leadership potential.</p>
+                </div>
+              </div>
+
+              <div className="archive-item">
+                <div className="year">FULL</div>
+                <div className="details">
+                  <h4>Full Stack Developer</h4>
+                  <p>Building high-performance applications using the MERN stack and React Native.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        
       </div>
-      <a href="PrasadResume2026.pdf" download className="download-cv1">
-              Download CV
-            </a>
     </section>
   );
 }

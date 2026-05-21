@@ -1,188 +1,132 @@
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { FaReact, FaNodeJs, FaJs, FaCss3Alt } from "react-icons/fa";
-import { SiMongodb, SiExpress, SiSelenium } from "react-icons/si";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import "./Hero.css";
-import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
-import { SiLeetcode } from "react-icons/si";
-import ProgressDots from "./ProgressDots";
+import React, { useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { FaLinkedin, FaGithub, FaInstagram, FaFacebook, FaDownload } from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
+import './Hero.css';
 
-const HeroSection = () => {
-  const texts = [
-    "MERN Developer",
-    "Web Developer",
-    "Frontend Developer",
-    "Backend Developer",
-    "Quality Assurance",
-    "Android Developer",
-  ];
-  const socialLinks = [
-    { icon: <FaInstagram size={20} />, url: "https://www.instagram.com/malviprasad/", color: "text-pink-500" },
-    { icon: <FaLinkedin size={20} />, url: "https://www.linkedin.com/in/prasad-malvi/", color: "text-blue-600" },
-    { icon: <FaGithub size={20} />, url: "https://github.com/PrasadMalvi", color: "text-gray-900" },
-  ];
-  const bubbles = [
-    { size: 30, x: -50, y: -40, delay: 0 },
-    { size: 40, x: 60, y: 50, delay: 0.2 },
-    { size: 20, x: -30, y: 70, delay: 0.4 },
-    { size: 50, x: 80, y: -20, delay: 0.6 },
-    { size: 25, x: -70, y: -60, delay: 0.8 },
-  ];
-
-  const [index, setIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const typingSpeed = 100;
-  const deletingSpeed = 50;
-  const pauseTime = 1500;
+function Hero() {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+  const scale = useTransform(scrollY, [0, 400], [1, 0.9]);
+  const xBg = useTransform(scrollY, [0, 1000], ["0%", "-30%"]);
 
   useEffect(() => {
-    const startTypingDelay = index === 0 && displayedText === "" ? 2000 : 0; // ⬅️ Delay only at the start
-  
-    const startTyping = setTimeout(() => {
-      const fullText = texts[index];
-  
-      if (!isDeleting && displayedText.length < fullText.length) {
-        setTimeout(() => {
-          setDisplayedText(fullText.slice(0, displayedText.length + 1));
-        }, typingSpeed);
-      } else if (isDeleting && displayedText.length > 0) {
-        setTimeout(() => {
-          setDisplayedText(fullText.slice(0, displayedText.length - 1));
-        }, deletingSpeed);
-      } else {
-        setTimeout(() => {
-          setIsDeleting(!isDeleting);
-          if (isDeleting) {
-            setIndex((prev) => (prev + 1) % texts.length);
-          }
-        }, pauseTime);
-      }
-    }, startTypingDelay);
-  
-    return () => clearTimeout(startTyping);
-  }, [displayedText, isDeleting]);
-  
+    const handleMouseMove = (e) => {
+      const { clientX, clientY } = e;
+      const x = (clientX / window.innerWidth - 0.5) * 30;
+      const y = (clientY / window.innerHeight - 0.5) * 30;
+      setMousePos({ x, y });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  const socials = [
+    { icon: <FaLinkedin />, url: "https://www.linkedin.com/in/prasad-malvi/", label: "LI" },
+    { icon: <FaGithub />, url: "https://github.com/PrasadMalvi", label: "GH" },
+    { icon: <FaInstagram />, url: "https://www.instagram.com/malviprasad/", label: "IG" },
+    { icon: <FaFacebook />, url: "https://www.facebook.com/prasad.malvi.50/", label: "FB" },
+  ];
 
   return (
-    <section className="hero" id="home">
-      {/* Left Side Animation */}
-      <DotLottieReact
-        src="https://lottie.host/359597b8-42d5-43f5-8261-2e9818a49f92/gcL3swqx44.lottie"
-        loop
-        autoplay
-        className="lottie-icon"
-      />
-
-      <div className="hero-content">
-        {/* Intro Box */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="intro-box"
-        >
-          <div className="intro-content">
-            <p>
-              I am <span className="name">Prasad</span>
-            </p>
-          </div>
-        </motion.div>
+    <section id="hero" data-label="Home" className="hero-section">
+      <motion.div 
+        className="bg-text-layer"
+        style={{ x: xBg, top: '15%', opacity: 0.05 }}
+      >
+        ARCHITECT // 2025
+      </motion.div>
+      {/* Side Socials */}
+      <div className="hero-socials-side">
+        {socials.map((social, i) => (
+          <a key={i} href={social.url} target="_blank" rel="noreferrer" className="social-side-link">
+            {social.icon}
+          </a>
+        ))}
+        <div className="side-line"></div>
       </div>
 
-      {/* Right Side - Typing Effect Inside the Circle */}
-      <motion.div className="hero-image">
-        <div className="circle">
-          <span className="changing-text-circle">
-            {displayedText}
-          <span className="cursor">|</span>
+      <motion.div 
+        className="container"
+        style={{ opacity, scale }}
+      >
+        <div className="hero-core">
+          <div className="section-num">01 // INTRODUCTION</div>
 
-          </span>
+          <div className="hero-headlines">
+            <motion.h2 
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              className="pre-title"
+            >
+              SOFTWARE ENGINEER @ KERV DIGITAL
+            </motion.h2>
+            
+            <motion.h1 
+              initial={{ y: 80, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              className="main-display"
+            >
+              PRASAD <span className="outline-text">MALVI</span>
+            </motion.h1>
+
+            <motion.p className="hero-description">
+              Currently engineering enterprise-grade solutions at <span className="text-white">Kerv Digital</span>. 
+              Bridging the gap between monolithic stability and <span className="text-white">freelance agility</span> 
+              through MERN and React Native architectures.
+            </motion.p>
+          </div>
+
+          <div className="hero-footer">
+            <div className="cta-group">
+              <a href="/PrasadResume2026.pdf" download className="btn-primary">
+                Download CV
+                <FaDownload style={{ marginLeft: '10px' }} />
+              </a>
+              <a href="#contact" className="btn-secondary">Get in touch</a>
+            </div>
+
+            <div className="status-badge">
+              <div className="pulse-dot"></div>
+              <span>Open for gigs</span>
+            </div>
+          </div>
         </div>
-
-        {/* Lottie Animation */}
-        <DotLottieReact
-          src="https://lottie.host/df60580d-f1ab-44ae-8d7a-b92b8095d924/0D6PhUqHIq.lottie"
-          loop
-          autoplay
-          className="aniimag"
-        />
-
-        {/* Floating Icons */}
-        <motion.div
-          className="icon js text-yellow-500"
-          animate={{ y: [0, -20, 0] }}
-          transition={{ repeat: Infinity, duration: 3 }}
-        >
-          <FaJs size={70} />
-        </motion.div>
-        <motion.div
-          className="icon react text-blue-400"
-          animate={{ y: [0, -20, 0] }}
-          transition={{ repeat: Infinity, duration: 3 }}
-        >
-          <FaReact size={70} />
-        </motion.div>
-        <motion.div
-          className="icon node text-green-500"
-          animate={{ y: [0, -20, 0] }}
-          transition={{ repeat: Infinity, duration: 3 }}
-        >
-          <FaNodeJs size={70} />
-        </motion.div>
-        <motion.div
-          className="icon css text-blue-600"
-          animate={{ y: [0, -20, 0] }}
-          transition={{ repeat: Infinity, duration: 3 }}
-        >
-          <FaCss3Alt size={70} />
-        </motion.div>
-        <motion.div
-          className="icon mongo text-green-700"
-          animate={{ y: [0, -20, 0] }}
-          transition={{ repeat: Infinity, duration: 3 }}
-        >
-          <SiMongodb size={70} />
-        </motion.div>
-        <motion.div
-          className="icon express text-gray-700"
-          animate={{ y: [0, -20, 0] }}
-          transition={{ repeat: Infinity, duration: 3 }}
-        >
-          <SiExpress size={70} />
-        </motion.div>
-        <motion.div
-          className="icon selenium text-green-500"
-          animate={{ y: [0, -20, 0] }}
-          transition={{ repeat: Infinity, duration: 3 }}
-        >
-          <SiSelenium size={70} />
-        </motion.div>
       </motion.div>
-      <div className="social-links">
-      {socialLinks.map((link, index) => (
-        <motion.a
-          key={index}
-          href={link.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`social-icon ${link.color}`}
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: index * 0.3, duration: 0.5 }}
-          whileHover={{ scale: 1.2 }}
-        >
-          {link.icon}
-        </motion.a>
-      ))}
-    </div>
-    <div className="circle2"></div>
-    <div className="circle3"></div>
-    <div className="circle4"></div>
-    <ProgressDots />
+
+      <motion.div 
+        className="hero-visual"
+        style={{ 
+          rotateX: -mousePos.y,
+          rotateY: mousePos.x,
+          transformStyle: 'preserve-3d',
+          opacity
+        }}
+      >
+        <div className="visual-card">
+          <div className="card-glare"></div>
+          <div className="card-top">
+            <span className="card-tag">ENGINEER</span>
+            <span className="card-serial">PM-2025</span>
+          </div>
+          <div className="card-content">
+            <div className="code-block">
+              <span>const dev = { "{" }</span>
+              <span className="indent">name: 'Prasad',</span>
+              <span className="indent">role: 'Software Engineer'</span>
+              <span>{ "}" };</span>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      <div className="hero-scroll-indicator">
+        <span>SCROLL TO DISCOVER</span>
+        <div className="scroll-line"></div>
+      </div>
     </section>
   );
-};
+}
 
-export default HeroSection;
+export default Hero;

@@ -1,41 +1,40 @@
-import React, { useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
-import HomePage from "./HomePage";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { motion, useScroll } from 'framer-motion';
+import Navbar from './Components/Navbar';
+import Footer from './Components/Footer';
+import HomePage from './HomePage';
+import AnalyticsPage from './Components/AnalyticsPage';
+import ProgressDots from './Components/ProgressDots';
+import './index.css';
 
-// ✅ Function to track visitors
-const trackVisitor = async (pageUrl) => {
-  try {
-    await fetch("https://prasadportfolio.onrender.com/api/visitor/track", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ page: pageUrl }),
-    });
-  } catch (error) {
-    console.error("Error tracking visitor:", error);
-  }
-};
+function App() {
+  const { scrollYProgress } = useScroll();
 
-// ✅ Page Tracker Component
-const PageTracker = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    trackVisitor(location.pathname);
-  }, [location.pathname]);
-
-  return null;
-};
-
-const App = () => {
   return (
     <Router>
-      <PageTracker />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
+      <div className="app-container">
+        {/* Cinematic Backdrop */}
+        <div className="app-bg" />
+        <div className="noise-overlay" />
+        <div className="radial-glow" />
+
+        {/* Cinematic Progress Line */}
+        <motion.div 
+          className="scroll-progress-line"
+          style={{ scaleX: scrollYProgress }}
+        />
+        
+        <Navbar />
+        <ProgressDots />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/analytics" element={<AnalyticsPage />} />
+        </Routes>
+        <Footer />
+      </div>
     </Router>
   );
-};
+}
 
 export default App;

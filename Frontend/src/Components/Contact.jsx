@@ -1,72 +1,83 @@
-import React, { useState } from "react";
-import "./Contact.css"; // Import the CSS file
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FaPaperPlane, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaInstagram, FaFacebook, FaDownload } from 'react-icons/fa';
+import './Contact.css';
 
 function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [msg, setMsg] = useState("");
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch("http://localhost:5050/api/contact/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        setMsg("✅ Message sent! Prasad will get back to you soon.");
-        setFormData({ name: "", email: "", message: "" }); // Reset form
-      } else {
-        setMsg("❌ Failed to send message. Please try again.");
-      }
-
-      setTimeout(() => setMsg(""), 5000);
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setMsg("Server error. Please try again later.");
-    }
-  };
-
   return (
-    <section id="contact">
+    <section id="contact" data-label="Contact" className="contact-v3">
       <div className="container">
-        <h1 className="title">Get in Touch</h1>
+        <div className="section-num">05 // THE CONNECTION</div>
+        
+        <div className="contact-layout">
+          {/* Left: Huge Heading & Intro */}
+          <div className="contact-info">
+            <h2 className="contact-main-title">STAY IN <br/> <span className="outline-text">THE LOOP.</span></h2>
+            <p className="contact-description">
+              Whether you have a question, a project idea, or just want to say hi, 
+              I'm always open to new connections and collaborations.
+            </p>
 
-        <div className="contact-wrapper">
-          {/* Left Section - Contact Info */}
-          <div className="contact-left">
-            <p><i className="fa-solid fa-paper-plane icon1"></i> Prasadmalvi23@gmail.com</p>
-            <p><i className="fa-solid fa-square-phone icon1"></i> 7996592596</p>
-
-            {/* Social Icons */}
-            <div className="social-icons1">
-              <a href="https://www.facebook.com/prasad.malvi.50/"><i className="fa-brands fa-facebook"></i></a>
-              <a href="https://github.com/PrasadMalvi"><i className="fa-brands fa-github"></i></a>
-              <a href="https://www.instagram.com/malviprasad/"><i className="fa-brands fa-instagram"></i></a>
-              <a href="https://www.linkedin.com/in/prasad-malvi"><i className="fa-brands fa-linkedin"></i></a>
+            <div className="contact-methods">
+              <a href="mailto:Prasadmalvi23@gmail.com" className="method-item">
+                <div className="method-icon"><FaPaperPlane /></div>
+                <div className="method-text">
+                  <span>EMAIL ME</span>
+                  <strong>Prasadmalvi23@gmail.com</strong>
+                </div>
+              </a>
+              <a href="tel:+917996592596" className="method-item">
+                <div className="method-icon"><FaPhone /></div>
+                <div className="method-text">
+                  <span>CALL ME</span>
+                  <strong>+91 79965 92596</strong>
+                </div>
+              </a>
+              <div className="method-item">
+                <div className="method-icon"><FaMapMarkerAlt /></div>
+                <div className="method-text">
+                  <span>BASED IN</span>
+                  <strong>Bangalore, Karnataka</strong>
+                </div>
+              </div>
             </div>
 
-            {/* Download CV Button */}
-            <a href="PrasadResume2026.pdf" download className="download-cv">Download CV</a>
+            <div className="contact-socials-row">
+              <a href="https://www.linkedin.com/in/prasad-malvi" target="_blank" rel="noreferrer" className="social-icon-link"><FaLinkedin /></a>
+              <a href="https://github.com/PrasadMalvi" target="_blank" rel="noreferrer" className="social-icon-link"><FaGithub /></a>
+              <a href="https://www.instagram.com/malviprasad/" target="_blank" rel="noreferrer" className="social-icon-link"><FaInstagram /></a>
+              <a href="https://www.facebook.com/prasad.malvi.50/" target="_blank" rel="noreferrer" className="social-icon-link"><FaFacebook /></a>
+            </div>
+
+            <a href="/PrasadResume2026.pdf" download className="cv-download-btn">
+              <FaDownload /> DOWNLOAD CV
+            </a>
           </div>
 
-          {/* Right Section - Contact Form */}
-          <div className="contact-right">
-            <form onSubmit={handleSubmit}>
-              <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
-              <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required />
-              <textarea name="message" rows="5" placeholder="Your Message" value={formData.message} onChange={handleChange}></textarea>
-              <button type="submit">Send Message</button>
+          {/* Right: Architectural Form */}
+          <div className="contact-form-container">
+            <form className="contact-form-v3">
+              <div className="input-row">
+                <div className="input-field">
+                  <label>YOUR NAME</label>
+                  <input type="text" placeholder="Your Name Pal" />
+                </div>
+                <div className="input-field">
+                  <label>EMAIL ADDRESS</label>
+                  <input type="email" placeholder="your.email Peeps" />
+                </div>
+              </div>
+              <div className="input-field">
+                <label>YOUR MESSAGE</label>
+                <textarea rows="5" placeholder="Tell me how can we collab on..."></textarea>
+              </div>
+              <button type="submit" className="form-submit-btn">
+                SEND MESSAGE
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M4.16666 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
             </form>
-            <span id="msg">{msg}</span>
           </div>
         </div>
       </div>

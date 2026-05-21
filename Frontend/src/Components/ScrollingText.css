@@ -1,0 +1,38 @@
+.scrolling-text-container {
+  padding: 100px 0;
+  overflow: hidden;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.scrolling-row {
+  display: flex;
+  gap: 60px;
+  white-space: nowrap;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(5rem, 15vw, 12rem);
+  font-weight: 900;
+  line-height: 0.9;
+  color: rgba(255, 255, 255, 0.03);
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+}
+
+.scrolling-row.secondary {
+  color: rgba(255, 255, 255, 0.02);
+}
+
+.scrolling-row .outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 768px) {
+  .scrolling-text-container {
+    padding: 60px 0;
+  }
+}

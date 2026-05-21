@@ -1,41 +1,66 @@
 .progress-bar {
     position: fixed;
-    left: 20px;
+    right: 30px;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    z-index: 100;
+    gap: 15px;
+    z-index: 1000;
   }
   
+  .dot-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .dot-label {
+    position: absolute;
+    right: 25px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    opacity: 0;
+    transform: translateX(10px);
+    transition: 0.3s var(--ease);
+    pointer-events: none;
+    white-space: nowrap;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .dot-wrapper:hover .dot-label {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
   .dot {
-    width: 12px;
-    height: 12px;
-    background-color: #bbb;
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
-    transition: background 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s var(--ease);
+    outline: none;
   }
   
+  .dot:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+
   .dot.active {
-    background-color: #6a0dad;
-    transform: scale(1.3);
+    background-color: var(--accent);
+    transform: scale(2.5);
+    box-shadow: 0 0 10px var(--accent);
   }
   
   @media screen and (max-width: 768px) {
     .progress-bar {
-        left: 10px !important; /* Ensure this applies */
-        top: 45% !important;
-        gap: 8px !important;
-    }
-
-    .dot {
-        width: 10px !important;
-        height: 10px !important;
-    }
-
-    .dot.active {
-    background-color: #6a0dad;
-        transform: scale(1.2) !important;
+        display: none;
     }
 }
