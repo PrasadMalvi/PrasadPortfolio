@@ -1,6 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0077ff;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="awardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#b066ff;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#6e2cf2;stop-opacity:1" />
     </linearGradient>
@@ -12,14 +16,14 @@
   
   <!-- Modern Geometric Background -->
   <rect width="90" height="90" x="5" y="5" rx="24" fill="#0a0a0c"/>
-  <rect width="90" height="90" x="5" y="5" rx="24" fill="none" stroke="url(#glowGrad)" stroke-width="1.5" stroke-opacity="0.3"/>
+  <rect width="90" height="90" x="5" y="5" rx="24" fill="none" stroke="url(#blueGrad)" stroke-width="1.5" stroke-opacity="0.3"/>
 
   <!-- Stylized Monogram 'PM' -->
   <g filter="url(#softGlow)">
     <!-- The 'M' Integration (Rendered First/Behind) -->
     <path d="M52 70 V40 L65 55 L78 40 V70" 
           fill="none" 
-          stroke="#ffffff" 
+          stroke="url(#awardGrad)" 
           stroke-width="7" 
           stroke-linecap="round" 
           stroke-linejoin="round"/>
@@ -27,7 +31,7 @@
     <!-- The 'P' (Rendered Last/In Front) -->
     <path d="M32 35 V75 M32 35 H48 C56 35 56 51 48 51 H32" 
           fill="none" 
-          stroke="url(#glowGrad)" 
+          stroke="url(#blueGrad)" 
           stroke-width="7" 
           stroke-linecap="round" 
           stroke-linejoin="round"/>

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { FaMusic } from 'react-icons/fa';
 import './Skills.css';
 
 const skillGroups = [
@@ -16,6 +17,11 @@ const skillGroups = [
   {
     title: "DATABASE SYSTEM",
     skills: ["MongoDB", "PostgreSQL", "SQL // NoSQL"],
+    span: "small"
+  },
+  {
+    title: "VIBE CODING",
+    isVibe: true,
     span: "small"
   },
   {
@@ -62,20 +68,60 @@ function Skills() {
           {skillGroups.map((group, idx) => (
             <motion.div 
               key={idx}
-              className={`bento-item ${group.span}`}
+              className={`bento-item ${group.span} ${group.isVibe ? 'vibe-item' : ''}`}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
             >
               <div className="bento-inner">
-                <div className="glow-effect"></div>
-                <h3 className="group-title">{group.title}</h3>
-                <div className="tags-container">
-                  {group.skills.map((skill, i) => (
-                    <span key={i} className="skill-tag">{skill}</span>
-                  ))}
+                <div className="item-header">
+                  <h3 className="group-title">{group.title}</h3>
+                  {!group.isVibe && (
+                    <div className="status-indicator">
+                      <motion.span 
+                        className="pulse-dot"
+                        animate={{ opacity: [1, 0.4, 1] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      />
+                      <span className="status-text">ACTIVE</span>
+                    </div>
+                  )}
                 </div>
+                
+                {group.isVibe ? (
+                  <div className="vibe-coding-content">
+                    <div className="music-bars">
+                      {[...Array(5)].map((_, i) => (
+                        <motion.div 
+                          key={i}
+                          className="bar"
+                          animate={{ 
+                            height: [10, 30, 15, 25, 10], 
+                          }}
+                          transition={{ 
+                            repeat: Infinity, 
+                            duration: 0.8 + (i * 0.2),
+                            ease: "easeInOut" 
+                          }}
+                        />
+                      ))}
+                    </div>
+                    <div className="vibe-info">
+                      <FaMusic className="music-icon" />
+                      <div className="track-details">
+                        <span className="now-playing">NOW PLAYING</span>
+                        <span className="song-title">Lofi Beats // Deep Focus</span>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="tags-container">
+                    {group.skills.map((skill, i) => (
+                      <span key={i} className="skill-tag">{skill}</span>
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}

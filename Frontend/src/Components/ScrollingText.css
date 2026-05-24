@@ -1,5 +1,6 @@
 .scrolling-text-container {
-  padding: 100px 0;
+  padding: 0;
+  margin: 20px 0;
   overflow: hidden;
   background: var(--bg);
   display: flex;

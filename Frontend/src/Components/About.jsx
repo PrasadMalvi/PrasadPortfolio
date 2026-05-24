@@ -60,10 +60,14 @@ function About() {
                 <span className="val">1YR+</span>
                 <span className="lbl">EXPERIENCE</span>
               </div>
-              <div className="summary-item">
-                <span className="val">AWARD</span>
+              <motion.div 
+                className="summary-item highlight"
+                whileHover={{ scale: 1.05 }}
+              >
+                <span className="val award-text">AWARD</span>
                 <span className="lbl">FUTURE LEADER</span>
-              </div>
+                <div className="award-badge">KERV DIGITAL</div>
+              </motion.div>
             </div>
           </div>
 
@@ -86,18 +90,26 @@ function About() {
               <span className="block-label">PROFESSIONAL FOOTPRINT</span>
               
               <div className="archive-item">
-                <div className="year">PRESENT</div>
+                <div className="year">2025 – PRES</div>
                 <div className="details">
-                  <h4>Software Engineer // Kerv Digital</h4>
-                  <p>Architecting enterprise web solutions and optimizing cloud-native delivery pipelines.</p>
+                  <h4>Software Engineer // Kerv Digital, Bangalore</h4>
+                  <p>Building scalable full-stack applications with TypeScript, React, and Next.js. Designing microservices in a monorepo architecture and maintaining CI/CD pipelines with AWS monitoring.</p>
                 </div>
               </div>
 
               <div className="archive-item">
-                <div className="year">2024</div>
+                <div className="year">2025 // MAY-AUG</div>
                 <div className="details">
-                  <h4>Full Stack Developer // Freelance</h4>
-                  <p>Partnering with global startups to build scalable MVP architectures and mobile ecosystems.</p>
+                  <h4>SDE Intern // SkyQuest Technology Consulting</h4>
+                  <p>Built web scraping pipelines using Scrapy and Playwright. Extracted dynamic data and experimented with LLMs to automate extraction workflows.</p>
+                </div>
+              </div>
+
+              <div className="archive-item">
+                <div className="year">2024 – 2025</div>
+                <div className="details">
+                  <h4>Testing Trainee // Besant Technologies</h4>
+                  <p>Conducted manual and automation testing on live projects, improving bug detection efficiency by 20% through systematic test case design.</p>
                 </div>
               </div>
             </div>

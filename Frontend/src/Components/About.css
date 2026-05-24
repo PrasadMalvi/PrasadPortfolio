@@ -1,5 +1,5 @@
 .about-v3 {
-  padding: 120px 0;
+  padding: 20px 0 120px 0;
   background: var(--bg);
 }
 
@@ -85,6 +85,34 @@
   font-size: 9px;
   letter-spacing: 0.2em;
   color: var(--text-muted);
+}
+
+.summary-item.highlight {
+  position: relative;
+  padding: 10px 20px;
+  background: rgba(155, 52, 235, 0.05);
+  border: 1px solid rgba(155, 52, 235, 0.2);
+  border-radius: 4px;
+}
+
+.award-text {
+  background: linear-gradient(135deg, #b066ff, #6e2cf2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.award-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--accent);
+  color: #000;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 3px 6px;
+  border-radius: 2px;
+  letter-spacing: 1px;
 }
 
 .content-block {

@@ -29,6 +29,9 @@ function Hero() {
     { icon: <FaFacebook />, url: "https://www.facebook.com/prasad.malvi.50/", label: "FB" },
   ];
 
+  const firstName = "PRASAD".split("");
+  const lastName = "MALVI".split("");
+
   return (
     <section id="hero" data-label="Home" className="hero-section">
       <motion.div 
@@ -56,25 +59,51 @@ function Hero() {
 
           <div className="hero-headlines">
             <motion.h2 
-              initial={{ y: 50, opacity: 0 }}
+              initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               className="pre-title"
             >
               SOFTWARE ENGINEER @ KERV DIGITAL
             </motion.h2>
             
-            <motion.h1 
-              initial={{ y: 80, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              className="main-display"
-            >
-              PRASAD <span className="outline-text">MALVI</span>
-            </motion.h1>
+            <h1 className="main-display">
+              <span className="name-row">
+                {firstName.map((char, i) => (
+                  <motion.span 
+                    key={i}
+                    initial={{ y: 40, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 + i * 0.05, duration: 0.5 }}
+                    className="char"
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
+              <span className="name-row">
+                {lastName.map((char, i) => (
+                  <motion.span 
+                    key={i}
+                    initial={{ y: 40, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.6 + i * 0.05, duration: 0.5 }}
+                    className="char outline-text"
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
+            </h1>
 
-            <motion.p className="hero-description">
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2 }}
+              className="hero-description"
+            >
               Currently engineering enterprise-grade solutions at <span className="text-white">Kerv Digital</span>. 
-              Bridging the gap between monolithic stability and <span className="text-white">freelance agility</span> 
-              through MERN and React Native architectures.
+              Bridging the gap between monolithic stability and <span className="text-white">architectural precision</span> 
+              through MERN and React Native ecosystems.
             </motion.p>
           </div>
 
@@ -87,9 +116,15 @@ function Hero() {
               <a href="#contact" className="btn-secondary">Get in touch</a>
             </div>
 
-            <div className="status-badge">
-              <div className="pulse-dot"></div>
-              <span>Open for gigs</span>
+            <div className="status-badge-v3">
+              <div className="location-info">
+                <span className="city">BANGALORE, IN</span>
+                <span className="coords">12.9716° N, 77.5946° E</span>
+              </div>
+              <div className="dot-group">
+                <div className="pulse-dot"></div>
+                <span className="live-text">AVAILABLE</span>
+              </div>
             </div>
           </div>
         </div>
@@ -107,15 +142,33 @@ function Hero() {
         <div className="visual-card">
           <div className="card-glare"></div>
           <div className="card-top">
-            <span className="card-tag">ENGINEER</span>
-            <span className="card-serial">PM-2025</span>
+            <span className="card-tag">LATEST_LOG</span>
+            <span className="card-serial">0x2F4A</span>
           </div>
           <div className="card-content">
-            <div className="code-block">
-              <span>const dev = { "{" }</span>
-              <span className="indent">name: 'Prasad',</span>
-              <span className="indent">role: 'Software Engineer'</span>
-              <span>{ "}" };</span>
+            <div className="log-line">
+              <span className="timestamp">12:44:02.1</span>
+              <span className="msg">sys.init_success</span>
+            </div>
+            <div className="log-line">
+              <span className="timestamp">12:44:02.4</span>
+              <span className="msg">auth.handshake: OK</span>
+            </div>
+            <div className="log-line accent">
+              <span className="timestamp">12:44:03.0</span>
+              <span className="msg">vibe.coding_mode_active</span>
+            </div>
+          </div>
+          <div className="card-footer">
+            <div className="data-bars">
+              {[...Array(8)].map((_, i) => (
+                <motion.div 
+                  key={i} 
+                  className="data-bar"
+                  animate={{ height: [4, 12, 6, 14, 4] }}
+                  transition={{ repeat: Infinity, duration: 1 + i * 0.1 }}
+                />
+              ))}
             </div>
           </div>
         </div>
