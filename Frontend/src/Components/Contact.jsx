@@ -1,9 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaPaperPlane, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaInstagram, FaFacebook, FaDownload } from 'react-icons/fa';
 import './Contact.css';
+import API from '../api';
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [status, setStatus] = useState({
+    submitting: false,
+    submitted: false,
+    error: null
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ submitting: true, submitted: false, error: null });
+
+    try {
+      const response = await API.post('/contact/submit', formData);
+      if (response.status === 201) {
+        setStatus({ submitting: false, submitted: true, error: null });
+        setFormData({ name: '', email: '', message: '' });
+        // Reset success message after 5 seconds
+        setTimeout(() => setStatus(prev => ({ ...prev, submitted: false })), 5000);
+      }
+    } catch (err) {
+      console.error('Contact form submission error:', err);
+      setStatus({ 
+        submitting: false, 
+        submitted: false, 
+        error: err.response?.data?.error || 'Something went wrong. Please try again later.' 
+      });
+    }
+  };
+
   return (
     <section id="contact" data-label="Contact" className="contact-v3">
       <div className="container">
@@ -56,23 +98,55 @@ function Contact() {
 
           {/* Right: Architectural Form */}
           <div className="contact-form-container">
-            <form className="contact-form-v3">
+            <form className="contact-form-v3" onSubmit={handleSubmit}>
               <div className="input-row">
                 <div className="input-field">
-                  <label>YOUR NAME</label>
-                  <input type="text" placeholder="Your Name Pal" />
+                  <label htmlFor="name">YOUR NAME</label>
+                  <input 
+                    type="text" 
+                    id="name"
+                    name="name" 
+                    placeholder="Your Name Pal" 
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
                 <div className="input-field">
-                  <label>EMAIL ADDRESS</label>
-                  <input type="email" placeholder="your.email Peeps" />
+                  <label htmlFor="email">EMAIL ADDRESS</label>
+                  <input 
+                    type="email" 
+                    id="email"
+                    name="email" 
+                    placeholder="your.email Peeps" 
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
               </div>
               <div className="input-field">
-                <label>YOUR MESSAGE</label>
-                <textarea rows="5" placeholder="Tell me how can we collab on..."></textarea>
+                <label htmlFor="message">YOUR MESSAGE</label>
+                <textarea 
+                  id="message"
+                  name="message" 
+                  rows="5" 
+                  placeholder="Tell me how can we collab on..."
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                ></textarea>
               </div>
-              <button type="submit" className="form-submit-btn">
-                SEND MESSAGE
+
+              {status.error && <p className="status-message error">{status.error}</p>}
+              {status.submitted && <p className="status-message success">Message sent successfully! ✨</p>}
+
+              <button 
+                type="submit" 
+                className="form-submit-btn" 
+                disabled={status.submitting}
+              >
+                {status.submitting ? 'SENDING...' : 'SEND MESSAGE'}
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path d="M4.16666 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
